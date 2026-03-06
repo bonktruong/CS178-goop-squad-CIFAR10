@@ -1,0 +1,19 @@
+{
+  "seed": 178,
+  "device": "cuda:0",
+  "best_model": "AllCNNB",
+  "final_metrics": {
+    "best_model": "AllCNNB",
+    "test_accuracy": 0.8113,
+    "test_precision_macro": 0.8186,
+    "test_recall_macro": 0.8113,
+    "test_f1_macro": 0.8122
+  },
+  "model_weight_paths": {
+    "ModelA": "/home/pronsh/Coding/CS178/third_party/CS178-goop-squad-CIFAR10/outputs/model_weights/shahpk1_modela_weights.pt",
+    "AllCNNB": "/home/pronsh/Coding/CS178/third_party/CS178-goop-squad-CIFAR10/outputs/model_weights/shahpk1_allcnnb_weights.pt",
+    "AllCNNC": "/home/pronsh/Coding/CS178/third_party/CS178-goop-squad-CIFAR10/outputs/model_weights/shahpk1_allcnnc_weights.pt"
+  },
+  "best_weight_primary": "/home/pronsh/Coding/CS178/third_party/CS178-goop-squad-CIFAR10/outputs/model_weights/shahpk1_allcnn_best_weights.pt",
+  "best_weight_alias": "/home/pronsh/Coding/CS178/third_party/CS178-goop-squad-CIFAR10/outputs/model_weights/shahpk1_best_model.pt"
+}

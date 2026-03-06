@@ -1,0 +1,4 @@
+model_label,val_accuracy,val_precision_macro,val_recall_macro,val_f1_macro,test_accuracy,test_precision_macro,test_recall_macro,test_f1_macro,weights
+AllCNNB,0.8086,0.8169,0.8086,0.8096,0.8113,0.8186,0.8113,0.8122,outputs/model_weights/shahpk1_allcnnb_weights.pt
+AllCNNC,0.7299,0.7404,0.7299,0.7302,0.7276,0.7362,0.7276,0.7271,outputs/model_weights/shahpk1_allcnnc_weights.pt
+ModelA,0.7234,0.7236,0.7234,0.7193,0.7185,0.7204,0.7185,0.7139,outputs/model_weights/shahpk1_modela_weights.pt
