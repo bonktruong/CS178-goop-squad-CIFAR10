@@ -10,7 +10,7 @@ We evaluated three CNN variants (`ModelA`, `AllCNNB`, `AllCNNC`) on CIFAR-10 usi
 
 - Development split: stratified 75/25 from `data/cifar10/train`
 - Final test split: `data/cifar10/test` (used only for final reporting)
-- Selection policy: pick best validation model, then report one held-out test result
+- Selection policy: pick the best validation model, then report one held-out test result
 - Metrics: accuracy + macro precision/recall/F1
 - Reproducibility seed: `178`
 - Reference architecture source: <https://arxiv.org/pdf/1412.6806>
@@ -24,7 +24,7 @@ This project compares one conventional CNN baseline (`ModelA`) with two all-conv
 - **Conv2d (3x3):** Each convolution learns local spatial patterns (edges, textures, object parts)
 - **ReLU:** adds non-linearity so stacked layers can model complex class boundaries
 - **MaxPool / Strided Conv:** reduces spatial size while growing receptive field (it keeps the strongest activations in a region or learns to downsample via stride)
-- **Dropout / Dropout2d:** regularizes by randomly dropping activations/channels during training (helping prevent overfitting, preventing the network to rely on specific features too much)
+- **Dropout / Dropout2d:** regularizes by randomly dropping activations/channels during training (helping prevent overfitting, preventing the network from relying on specific features too much)
 - **1x1 Conv:** channel mixing and class-logit projection at low compute cost (combines features across channels without spatial reduction)
 - **Global Average Pooling (AdaptiveAvgPool2d(1,1)):** reduces each channel to one value and limits overfitting from large fully connected heads
 
@@ -89,7 +89,7 @@ flowchart LR
  N --> O[Logits 10]
 ```
 
-Figure: **AllCNNC** is architecturally similar to AllCNNB in this implementation but differed in achieved optimization outcome.
+Figure: **AllCNNC** is architecturally similar to AllCNNB in this implementation, but differs in the achieved optimization outcome.
 
 ### Component-level comparison
 
@@ -101,17 +101,17 @@ Figure: **AllCNNC** is architecturally similar to AllCNNB in this implementation
 
 ### ModelA (baseline CNN)
 
-`ModelA` uses two convolutional blocks with max-pooling to gradgually reduce the size of the feature maps/ Afer the convolutional layers, it flattens the features and passes them through a fully connected layer for classification. The convoultional layers learn image patterns, edges, textures etc. while the connected layers keeps the strongest activations relavant and helps to prevent overfitting. This model is a strong baseline but may not capture as rich spatial features as the all-convolutional variants.
+`ModelA` uses two convolutional blocks with max-pooling to gradually reduce the size of the feature maps. After the convolutional layers, it flattens the features and passes them through a fully connected layer for classification. The convolutional layers learn image patterns, edges, textures, etc, while the connected layers keep the strongest activations relevant and help prevent overfitting. This model is a strong baseline but may not capture as rich spatial features as the all-convolutional variants.
 
-For hyperparameter tuning; we tried different learning rates, dropout rates, and batch sizes. The best validation performance was achieved with a learning rate of `0.01`, a dropout rate of `0.2`, and a batch size of `128`. However, even with tuning, `ModelA` did not outperform the all-convolutional variants, indicating that its architectural limitations may have capped its performance on this dataset.
+For hyperparameter tuning, we tried different learning rates, dropout rates, and batch sizes. The best validation performance was achieved with a learning rate of `0.01`, a dropout rate of `0.2`, and a batch size of `128`. However, even with tuning, `ModelA` did not outperform the all-convolutional variants, indicating that its architectural limitations may have capped its performance on this dataset.
 
 ### AllCNNB (selected)
 
-`AllCNNB` replaces explicit pooling with learned `strided convolutions` (which reduce the spatial size) and ends with `1x1` conv + global average pooling. The downsampling helps the convolutions to compress spatial information while retaining important features. The 1x1 conolution mixes infromation aceoss channels and global average pooling once again reduces all the channels into a single value for classification. In this run, that design produced the best balance of trainability and feature quality, resulting in the highest validation and test performance.
+`AllCNNB` replaces explicit pooling with learned `strided convolutions` (which reduce the spatial size) and ends with `1x1` conv + global average pooling. The downsampling helps the convolutions to compress spatial information while retaining important features. The 1x1 convolution mixes information across channels, and global average pooling once again reduces all the channels into a single value for classification. In this run, that design produced the best balance of trainability and feature quality, resulting in the highest validation and test performance.
 
 ### AllCNNC
 
-`AllCNNC` is also all-convolutional and expressive, but deeper/more sensitive under the current schedule, as such hyperparameter tuning becomes more important and this was the exact architechture used in the paper, and finding the right sets of hyperparameters was crucial. It learned useful features but did not surpass `AllCNNB` in this training configuration, indicating that architecture capacity alone was not enough without better hyperparameter matching.
+`AllCNNC` is also all-convolutional and expressive, but deeper/more sensitive under the current schedule, as such hyperparameter tuning becomes more important, and this was the exact architecture used in the paper, and finding the right sets of hyperparameters was crucial. It learned useful features but did not surpass `AllCNNB` in this training configuration, indicating that architecture capacity alone was not enough without better hyperparameter matching.
 
 ## 4) Benchmark Results
 
@@ -154,12 +154,12 @@ This is because it achieved the best validation performance and also led the hel
 
 ## 7) Why we think AllCNNB Won in This Run
 
-`AllCNNB` performed best because its design aligns well with CIFAR-10 scale and the training setup used here:
+`AllCNNB` performed best because its design aligns well with the CIFAR-10 scale and the training setup used here:
 
 1. **Learned downsampling instead of fixed pooling:**
  Strided convolutions retain learnable parameters during spatial reduction, often preserving discriminative detail better than static pooling.
 2. **Fully convolutional classification path:**
- The 1x1 conv produces class-specific feature maps and the global average pooling which helped reduce overfitting from large fully connected layers, which may have been a factor in `ModelA`'s lower performance. For ModelC the placement of the dropout layers and the optimization schedule may have made it harder to train effectively, leading to suboptimal performance compared to `AllCNNB`.
+ The 1x1 conv produces class-specific feature maps and the global average pooling, which helped reduce overfitting from large fully connected layers, which may have been a factor in `ModelA`'s lower performance. For ModelC, the placement of the dropout layers and the optimization schedule may have made it harder to train effectively, leading to suboptimal performance compared to `AllCNNB`.
 3. **Balanced regularization depth:**
  The Dropout in this model sets it apart from model A, causing it to generalize better without the risk of underfitting that can come with too much regularization (as may have happened in AllCNNC).
 
