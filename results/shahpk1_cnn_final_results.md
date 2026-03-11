@@ -1,6 +1,8 @@
 # shahpk1 CNN Final Results
 
-Generated: 2026-03-05
+## Overview
+
+Convolutional Neural Networks (CNNs) are machine learning models that automatically learn to recognize visual patterns—starting from simple edges and textures and building up to object parts—directly from labeled images. They do this by scanning the image with small learned filters and progressively summarizing spatial information, making them efficient and robust for tasks like image classification.
 
 ## 1) Summary
 
