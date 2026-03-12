@@ -167,6 +167,12 @@ This is because it achieved the best validation performance and also led the hel
 
 In short, the winning model is not just “bigger”; it uses a more effective combination of **trainable spatial compression + lightweight classifier head + stable regularization** for this dataset.
 
+## 7.5) Visualization of learned features
+
+![AllCNNB First Layer Filters](../outputs/graphs/test/allcnnb_featuremaps_conv1.png)
+
+![AllCNNB Input Image](../outputs/graphs/test/allcnnb_input_image.png)
+
 ## 8) Artifact Paths
 
 - Weights: `outputs/model_weights/shahpk1_modela_weights.pt`
