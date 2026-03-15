@@ -5,6 +5,7 @@ Dataset: [CIFAR-10](https://huggingface.co/datasets/uoft-cs/cifar10)
 ## Team
 
 Priyansh Shah: shahpk1: 44564800
+Anish Venkatesalu: anishv2: 33525132
 
 ```bash
 source .venv/bin/activate
