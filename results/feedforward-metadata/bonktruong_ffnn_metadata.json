@@ -1,0 +1,8 @@
+{
+  "seed": 178,
+  "device": "cpu",
+  "best_model": "arch_2-layer-512-256",
+  "test_accuracy": 0.5647,
+  "best_val_accuracy": 0.5637,
+  "num_params": 1708810
+}
