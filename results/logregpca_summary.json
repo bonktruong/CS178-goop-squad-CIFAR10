@@ -1,0 +1,147 @@
+{
+  "config": {
+    "model_label": "LogRegPCA",
+    "C": 1.0,
+    "max_iter": 250,
+    "feature_mode": "pca",
+    "pca_dim": 256,
+    "solver": "saga"
+  },
+  "train_metrics": {
+    "accuracy": 0.43290666666666666,
+    "macro_precision": 0.4282333101787542,
+    "macro_recall": 0.43290666666666666,
+    "macro_f1": 0.429304994142358,
+    "per_class": {
+      "airplane": {
+        "precision": 0.4722782258064516,
+        "recall": 0.4997333333333333,
+        "f1": 0.48561803576055973,
+        "support": 3750
+      },
+      "automobile": {
+        "precision": 0.4872235872235872,
+        "recall": 0.5288,
+        "f1": 0.507161125319693,
+        "support": 3750
+      },
+      "bird": {
+        "precision": 0.33962858042178157,
+        "recall": 0.28773333333333334,
+        "f1": 0.3115345748520283,
+        "support": 3750
+      },
+      "cat": {
+        "precision": 0.3298569725864124,
+        "recall": 0.2952,
+        "f1": 0.3115676892766676,
+        "support": 3750
+      },
+      "deer": {
+        "precision": 0.39499670836076367,
+        "recall": 0.32,
+        "f1": 0.3535651149086623,
+        "support": 3750
+      },
+      "dog": {
+        "precision": 0.3739924771628157,
+        "recall": 0.3712,
+        "f1": 0.37259100642398285,
+        "support": 3750
+      },
+      "frog": {
+        "precision": 0.4307031426633507,
+        "recall": 0.508,
+        "f1": 0.46616909335617274,
+        "support": 3750
+      },
+      "horse": {
+        "precision": 0.4745762711864407,
+        "recall": 0.4704,
+        "f1": 0.4724789071916432,
+        "support": 3750
+      },
+      "ship": {
+        "precision": 0.5097451274362819,
+        "recall": 0.544,
+        "f1": 0.5263157894736842,
+        "support": 3750
+      },
+      "truck": {
+        "precision": 0.4693320089396573,
+        "recall": 0.504,
+        "f1": 0.48604860486048607,
+        "support": 3750
+      }
+    }
+  },
+  "val_metrics": {
+    "accuracy": 0.40608,
+    "macro_precision": 0.4018959973932274,
+    "macro_recall": 0.40608000000000005,
+    "macro_f1": 0.4028252493009002,
+    "per_class": {
+      "airplane": {
+        "precision": 0.4482496194824962,
+        "recall": 0.4712,
+        "f1": 0.4594383775351014,
+        "support": 1250
+      },
+      "automobile": {
+        "precision": 0.4609552691432904,
+        "recall": 0.4864,
+        "f1": 0.47333592837680033,
+        "support": 1250
+      },
+      "bird": {
+        "precision": 0.31893382352941174,
+        "recall": 0.2776,
+        "f1": 0.2968349016253208,
+        "support": 1250
+      },
+      "cat": {
+        "precision": 0.2875226039783002,
+        "recall": 0.2544,
+        "f1": 0.2699490662139219,
+        "support": 1250
+      },
+      "deer": {
+        "precision": 0.381330685203575,
+        "recall": 0.3072,
+        "f1": 0.34027470093043866,
+        "support": 1250
+      },
+      "dog": {
+        "precision": 0.3276699029126214,
+        "recall": 0.324,
+        "f1": 0.3258246178600161,
+        "support": 1250
+      },
+      "frog": {
+        "precision": 0.3829787234042553,
+        "recall": 0.4608,
+        "f1": 0.41830065359477125,
+        "support": 1250
+      },
+      "horse": {
+        "precision": 0.4525660964230171,
+        "recall": 0.4656,
+        "f1": 0.4589905362776025,
+        "support": 1250
+      },
+      "ship": {
+        "precision": 0.505192878338279,
+        "recall": 0.5448,
+        "f1": 0.5242494226327945,
+        "support": 1250
+      },
+      "truck": {
+        "precision": 0.4535603715170279,
+        "recall": 0.4688,
+        "f1": 0.46105428796223447,
+        "support": 1250
+      }
+    }
+  },
+  "weights_path": "/Users/anishsajja/Documents/GitHub/CS178-goop-squad-CIFAR10/outputs/model_weights/logregpca_best.pkl"
+}
