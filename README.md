@@ -7,7 +7,7 @@ Dataset: [CIFAR-10](https://huggingface.co/datasets/uoft-cs/cifar10)
 Priyansh Shah: shahpk1: 44564800  
 Anish Venkatesalu: anishv2: 33525132
 Briana Truong: brianaht: 67857994
-
+Anish Sajja: 14545537
 ```bash
 source .venv/bin/activate
 uv sync
